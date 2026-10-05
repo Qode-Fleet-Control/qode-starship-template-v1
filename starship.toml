@@ -1,0 +1,43 @@
+# starship.toml — the prompt this repo ships. Point starship at it with
+#   export STARSHIP_CONFIG=/path/to/starship.toml
+# Plain-text symbols only, so it renders in any terminal without a Nerd Font.
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+command_timeout = 1000
+
+# "qode <dir> <git> <duration> <status>>" on one line
+format = """
+[qode](bold cyan) \
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$status\
+$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold blue"
+
+[git_branch]
+symbol = "git:"
+format = "[$symbol$branch]($style) "
+style = "bold purple"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
+
+[status]
+disabled = false
+symbol = "x"
+format = "[$symbol$status]($style) "
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"

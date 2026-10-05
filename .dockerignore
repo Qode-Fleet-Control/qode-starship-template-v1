@@ -1,0 +1,9 @@
+.git
+.github
+.fleet
+.fleet-deploy.log
+*.log
+.bin
+.env
+.env.*
+!.env.example
